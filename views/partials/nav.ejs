@@ -1,0 +1,39 @@
+<header>
+    <nav>
+        <div class="logo">
+            <img src="/logo.png" alt="Logo" />
+        </div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="../about.ejs">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="user-actions">
+            <a href="/cart">
+                <div class="cart">
+                    <div class="cart-icon">&#128722;</div>
+                    <div class="cart-quantity">
+                        <% if(cart && Object.keys(cart).length > 1) { %> <%=
+                        Object.keys(cart).length - 1 %> <% } else { %> 0 <% } %>
+                    </div>
+                </div></a
+            >
+            <% if(!currentUser) { %>
+            <button id="signin-btn">
+                <a href="/signin">Sign in</a>
+            </button>
+            <button id="signup-btn">
+                <a href="/signup">Sign Up</a>
+            </button>
+            <% } else { %>
+            <span><%= currentUser.username %></span>
+            <a href="/profile" style="background-color: transparent;"
+                ><img src="/images/user.png" alt="" class="profile"
+            /></a>
+            <button id="signup-btn">
+                <a href="/logout">Logout</a>
+            </button>
+            <% } %>
+        </div>
+    </nav>
+</header>

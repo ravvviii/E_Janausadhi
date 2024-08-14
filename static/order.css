@@ -1,0 +1,124 @@
+body {
+    background-color: rgb(235, 235, 235);
+}
+.purchase-container {
+    background-color: white;
+    border-top: 2px solid red;
+
+    border-radius: 8px;
+    /* width: fit-content; */
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+    margin: 30px auto;
+    width: 500px;
+}
+
+.purchase-container h2 {
+    font-size: 1.5rem;
+    padding-inline: 40px;
+    padding-block: 10px;
+}
+
+.order-info {
+    display: flex;
+    align-items: center;
+    padding-inline: 40px;
+    gap: 50px;
+    /* padding-inline: 40px; */
+}
+
+.order-info__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.key {
+    color: rgb(130, 130, 130);
+}
+.value {
+    color: rgb(40, 40, 40);
+}
+
+.items-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(243, 243, 243);
+
+    padding-inline: 40px;
+
+    margin-block: 20px;
+    padding-block: 20px;
+    gap: 10px;
+}
+
+.item-head {
+    display: flex;
+
+    /* border: 1px solid yellow; */
+}
+
+.item-head:not(.item-head:nth-of-type(1)) {
+    border-top: 1px solid rgb(96, 96, 96);
+    padding-top: 8px;
+}
+
+.item-head span:nth-of-type(1) {
+    flex: 2;
+    /* border: 1px solid red; */
+}
+.item-head span:nth-of-type(2) {
+    flex: 1;
+    /* border: 1px solid red; */
+}
+
+.item-head:nth-of-type(1) {
+    font-size: 1.2rem;
+    padding-block: 10px;
+}
+
+.total {
+    text-align: right;
+    padding-inline: 40px;
+}
+
+.horizontal-timeline {
+    /* border: 1px solid red; */
+    /* width: 450px; */
+    padding-inline: 40px;
+    padding-block: 20px;
+}
+.horizontal-timeline .items {
+    border-top: 2px solid #ddd;
+}
+
+.horizontal-timeline .items .items-list {
+    position: relative;
+    margin-right: 0;
+}
+
+.horizontal-timeline .items .items-list:before {
+    content: "";
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #bebdbc;
+    top: 0;
+    margin-top: -5px;
+}
+
+.horizontal-timeline .items .items-list:nth-of-type(1)::before {
+    background-color: #f37a27;
+    height: 15px;
+    width: 15px;
+    margin-top: -8px;
+}
+
+.horizontal-timeline .items .items-list {
+    padding-top: 15px;
+}

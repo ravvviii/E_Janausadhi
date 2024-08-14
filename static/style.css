@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+header {
+  background-color: #d16e08;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #d16e08;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+  }
+
+  
+  .logo img {
+    width: 60px;
+    height: auto;
+    margin-left: 19px;
+    /* margin-top: 2px; */
+    border-radius: 46%;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+
+    align-items: center;
+    margin-bottom: 0;
+  }
+  
+  ul li {
+    /* margin-right: 20px; */
+  }
+  
+  ul li a {
+    margin: 10px;
+    text-decoration: none;
+    color: #f3f3f3;
+    background-color: #d16e08;
+    font-size: 20px;
+    font-weight: 600;
+    /* border-radius: 5px; */
+  }
+  
+  .user-actions button {
+    margin-left: 10px;
+    background-color: #333;
+    color: #d16e08;
+    border: none;
+    padding: 8px 22px;
+    cursor: pointer;
+    border-radius: 15px;
+    /* text-decoration: none; */
+  }
+  
+  .user-actions button:hover {
+    background-color: #555;
+    text-decoration: none;
+  }
+  
+  
+  
+  
+  #signup-btn,a{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 500;
+    
+  }
+  #signin-btn,a{
+    font-weight: 500;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+
+  }
+  
+  
+  
+  /* content */
+  #wrapper{
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: grid;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    grid-template-columns: 150px, 1fr, 1fr;
+    /* grid-template-rows: 150px , 1fr, 1fr */
+  }
+
+
+
+
+  .search-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    border-radius: 9px;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+    
+  }
+  
+  #medicine-search {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 70%;
+    border-radius: 15px;
+    
+  }
+  
+  #search-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin: 10px 18px;
+    border-radius: 15px;
+  }
+  
+  .upload-section {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.upload-container {
+      /* border: 2px solid black; */
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  #prescription-upload,
+  #medicine-photo-upload {
+    margin-bottom: 20px;
+  }
+  
+  .locate-section {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 9px;
+  }
+  
+  .locate-container {
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 9px;
+  }
+  
+  #locate-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 9px;
+    
+  }
+  
+  

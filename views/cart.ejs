@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Cart</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="/table.css" />
+        <style>
+            .med-info {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .medicine-name {
+                font-size: 1.2rem;
+            }
+            .medicine-price {
+                font-size: 1.2rem;
+            }
+
+            .add-cart {
+                border: none;
+                font-size: 1.1rem;
+                color: white;
+                background-color: rgb(209, 110, 8);
+                padding: 0.25em 0.5em;
+                border-radius: 5px;
+            }
+            .user-actions {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                align-items: center;
+            }
+            .cart {
+                position: relative;
+                background-color: transparent;
+                cursor: pointer;
+            }
+            .cart-quantity {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: -17px;
+                left: -13px;
+                width: 25px;
+                height: 25px;
+
+                border-radius: 10px;
+                color: wheat;
+
+                background-color: rgb(24, 24, 24);
+            }
+            .profile {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+            .wrapper {
+                margin-top: 40px;
+            }
+
+            .checkout, .clear {
+                font-size: 1.1rem;
+                background-color: rgb(42, 149, 42);
+                color: white;
+                padding: 0.25em 0.75em;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .clear {
+                background-color: rgb(221, 121, 27);
+            }
+
+            button {
+                transition: 0.15s ease-in-out;
+            }
+
+            button:hover {
+                opacity: 0.7;
+            }
+        </style>
+    </head>
+    <body>
+        <%- include('partials/nav') %>
+
+        <div class="table-wrapper">
+            <h2>Medicines in your Cart :</h2>
+            <div class="table">
+                <% if(cart) { %> <% if(Object.keys(cart).length > 1) { %>
+                <div class="row header">
+                    <div class="cell">Generic name</div>
+                    <div class="cell">Quantity</div>
+                    <div class="cell">Unit price</div>
+                    <div class="cell">Price</div>
+                    <!-- <div class="cell">Category</div> -->
+                    <!-- <div class="cell">Add to Cart</div> -->
+                </div>
+                <% for(let id in cart) { %>
+                <form class="row" action="/cart/<%= id %>" method="POST">
+                    <div class="cell" data-title="name">
+                        <%= cart[id].name %>
+                    </div>
+                    <div class="cell" data-title="unit-quantity">
+                        <%= cart[id].quantity %>
+                    </div>
+                    <div class="cell" data-title="price">
+                        <%= cart[id].price %>
+                    </div>
+                    <div class="cell" data-title="total-price">
+                        <%=
+                        (Number(cart[id].price)*Number(cart[id].quantity)).toFixed(2)
+                        %>
+                    </div>
+                    <!-- <div class="cell" data-title="category">
+                        <%= cart[id].category %>
+                    </div> -->
+                    <!-- <div class="cell" data-title="btn">
+                        <button class="cell" data-title="category">Add</button>
+                    </div> -->
+                </form>
+                <% } %> <% } else { %>
+                <h2>No medicines !</h2>
+                <% } %> <% } %>
+            </div>
+        </div>
+
+        <% if(cart) { %>
+        <form class="wrapper-two" action="/purchase">
+            <% if(Object.keys(cart).length > 1) { %>
+
+            <div class="total">Total = <%= cart.total.toFixed(2) %> Rs</div>
+            <button class="checkout">Checkout</button>
+
+            <% } %>
+        </form>
+        <form class="wrapper-two" action="/clear-cart">
+            <button class="clear">Clear cart</button>
+        </form>
+        <% } %>
+    </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Generic Medicine Website</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./table.css" />
+        <style>
+            .med-info {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .medicine-name {
+                font-size: 1.2rem;
+            }
+            .medicine-price {
+                font-size: 1.2rem;
+            }
+
+            .add-cart {
+                border: none;
+                font-size: 1.1rem;
+                color: white;
+                background-color: rgb(209, 110, 8);
+                padding: 0.25em 0.5em;
+                border-radius: 5px;
+            }
+            .user-actions {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                align-items: center;
+            }
+            .cart {
+                position: relative;
+                background-color: transparent;
+                cursor: pointer;
+            }
+            .cart-quantity {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: -17px;
+                left: -13px;
+                width: 25px;
+                height: 25px;
+
+                border-radius: 10px;
+                color: wheat;
+
+                background-color: rgb(24, 24, 24);
+            }
+            .profile {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <%- include('partials/nav') %>
+        <!-- Rest of the website content -->
+        <%- include('partials/flash') %>
+        <div id="wrapper">
+            <div class="search-section">
+                <form class="search-container" action="/search">
+                    <input
+                        type="text"
+                        id="medicine-search"
+                        placeholder="Search for medicine..."
+                        name="search"
+                        value="<%= results?.search %>"
+                    />
+                    <button id="search-btn">Search</button>
+                </form>
+            </div>
+
+            <!-- <table class="search-result">
+                <tr>
+                    <th>Generic name</th>
+                    <th>Unit size</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+                <tr>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
+                </tr>
+                <tr>
+                    <td>Centro comercial Moctezuma</td>
+                    <td>Francisco Chang</td>
+                    <td>Mexico</td>
+                </tr>
+            </table> -->
+
+            <div class="table-wrapper">
+                <% if(results) { %> <% if(results.medicines.length > 0) { %>
+                <div class="table">
+                    <div class="row header">
+                        <div class="cell">Generic name</div>
+                        <div class="cell">Unit Size</div>
+                        <div class="cell">Price</div>
+                        <div class="cell">Category</div>
+                        <div class="cell">Add to Cart</div>
+                    </div>
+                    <% for(let result of results?.medicines) { %>
+                    <form
+                        class="row"
+                        action="/cart/<%= result.sr %>"
+                        method="POST"
+                    >
+                        <div class="cell" data-title="name">
+                            <%= result.name %>
+                        </div>
+                        <div class="cell" data-title="unit-size">
+                            <%= result.size %>
+                        </div>
+                        <div class="cell" data-title="price">
+                            <%= result.price %>
+                        </div>
+                        <div class="cell" data-title="category">
+                            <%= result.category %>
+                        </div>
+                        <div class="cell" data-title="btn">
+                            <button class="cell" data-title="category">
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                    <% } %>
+                </div>
+                <% } else { %>
+                <h2>No medicines !</h2>
+                <% } %> <% } %>
+            </div>
+
+            <!-- <section class="upload-section">
+    <div class="upload-container">
+      <h2>Upload Prescription</h2>
+      <input type="file" id="prescription-upload">
+      <button type="submit">Submit</button>
+    </div>
+  </section> -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h2>Upload Prescription</h2>
+                    <input type="file" id="prescription-upload" />
+                    <button type="submit">Submit</button>
+                </div>
+            </section>
+
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h2>Upload Photo of Medicine</h2>
+                    <input type="file" id="medicine-photo-upload" />
+                </div>
+            </section>
+
+            <!-- <section class="locate-section">
+                <div class="locate-container">
+                    <h2>Locate Nearby Store</h2>
+                    <input
+                        type="text"
+                        id="pincode-input"
+                        placeholder="Enter your PIN code"
+                    />
+                    <button id="locate-btn">Locate</button>
+                </div>
+            </section> -->
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+            integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+            integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+            crossorigin="anonymous"
+        ></script>
+        <script src="/search.js"></script>
+    </body>
+</html>
